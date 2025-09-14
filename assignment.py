@@ -4,9 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# ---------------------------------------
-# Task 1: Load and Explore The Dataset
-# ---------------------------------------
 
 try:
     df = pd.read_csv("iris.csv")
@@ -15,29 +12,22 @@ except FileNotFoundError:
     print("Error: iris.csv not found. Please place the CSV in the same folder as this script.")
     exit()
 
-# Display first few rows
 print("First 5 rows of the dataset:")
 print(df.head())
 
-# Check structure
+
 print("\nDataset info:")
 print(df.info())
 
 print("\nMissing values per column:")
 print(df.isnull().sum())
 
-# Clean dataset
+
 df = df.dropna()
 
-# ---------------------------------------
-# Task 2: Basic Data Analysis
-# ---------------------------------------
-
-# Compute descriptive statistics
 print("\nDescriptive statistics:")
 print(df.describe())
 
-# Grouping: mean petal length per species
 grouped = df.groupby('species')['petal_length'].mean()
 print("\nAverage petal length per species:")
 print(grouped)
